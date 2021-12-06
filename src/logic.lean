@@ -30,17 +30,8 @@ theorem doubleneg_law :
   ¬¬P ↔ P  :=
 begin
   split,
-  intro hp,
-  by_cases p : P,
-  exact p,
-
-  exfalso,
-  have hboom : false := hp p,
-  exact hboom,
-
-  intros hp hpf,
-  have hboom : false := hpf hp, --"Como P → ⊥ e P, logo ⊥"
-  exact hboom,
+  apply doubleneg_elim,
+  apply doubleneg_intro,
 end
 
 ------------------------------------------------
