@@ -10,22 +10,37 @@ variables P Q R : Prop
 theorem doubleneg_intro :
   P → ¬¬P  :=
 begin
-  intro hp, --"Suponha P"
-  intro hpf, --"Suponha ¬P"
+  intros hp hpf, --"Suponha P, ¬P"
   have hf : false := hpf hp, --"Como P → ⊥ e P, logo ⊥"
-  apply hf, --"Imediato (tenho meu alvo nos meus dados)"
+  exact hf, --"Imediato (tenho meu alvo nos meus dados)"
 end
 
 theorem doubleneg_elim :
   ¬¬P → P  :=
 begin
-  sorry,
+  intro hpf,
+  by_cases p : P,
+  exact p,
+  exfalso,
+  have hboom : false := hpf p,
+  exact hboom,
 end
 
 theorem doubleneg_law :
   ¬¬P ↔ P  :=
 begin
-  sorry,
+  split,
+  intro hp,
+  by_cases p : P,
+  exact p,
+
+  exfalso,
+  have hboom : false := hp p,
+  exact hboom,
+
+  intros hp hpf,
+  have hboom : false := hpf hp, --"Como P → ⊥ e P, logo ⊥"
+  exact hboom,
 end
 
 ------------------------------------------------
@@ -35,13 +50,22 @@ end
 theorem disj_comm :
   (P ∨ Q) → (Q ∨ P)  :=
 begin
-  sorry,
+  intro poq,
+  cases poq with hp hq,
+  right,
+  exact hp,
+  left,
+  exact hq,
 end
 
 theorem conj_comm :
   (P ∧ Q) → (Q ∧ P)  :=
 begin
-  sorry,
+  intro peq,
+  cases peq with hp hq,
+  split,
+  exact hq,
+  exact hp,
 end
 
 
