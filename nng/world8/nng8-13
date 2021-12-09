@@ -1,0 +1,6 @@
+induction n with k hk,
+apply zero_ne_succ 0,
+intro h,
+rw succ_eq_succ_iff at h,
+have f := hk h,
+exact f,
