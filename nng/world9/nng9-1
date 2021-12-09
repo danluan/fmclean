@@ -1,0 +1,8 @@
+intros ha hb hnb,
+cases b at hnb,
+rw mul_zero at hnb,
+have f := hb hnb,
+exact f,
+rw mul_succ at hnb,
+have hna := add_left_eq_zero hnb,
+exact ha(hna),

@@ -1,0 +1,8 @@
+cases b,
+rw mul_zero at h,
+right,
+exact h,
+rw mul_succ at h,
+have ha := add_left_eq_zero h,
+left,
+exact ha,
