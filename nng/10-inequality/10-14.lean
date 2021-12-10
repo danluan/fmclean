@@ -1,0 +1,6 @@
+rw le_iff_exists_add,
+cases h with c h,
+use c,
+rw h,
+rw add_assoc,
+refl,
