@@ -67,13 +67,23 @@ end
 theorem impl_as_disj_converse :
   (¬P ∨ Q) → (P → Q)  :=
 begin
-  sorry,
+  intro h_fp_or_q,
+  intro p,
+  cases h_fp_or_q with hp hq,
+  exfalso,
+  contradiction,
+  exact hq,
 end
 
 theorem disj_as_impl :
   (P ∨ Q) → (¬P → Q)  :=
 begin
-  sorry,
+  intro h,
+  intro np,
+  cases h with hp hq,
+  exfalso,
+  contradiction,
+  exact hq,
 end
 
 
@@ -84,19 +94,29 @@ end
 theorem impl_as_contrapositive :
   (P → Q) → (¬Q → ¬P)  :=
 begin
-  sorry,
+  intros hpq hnq hp,
+  have hq := hpq hp,
+  contradiction,
 end
 
 theorem impl_as_contrapositive_converse :
   (¬Q → ¬P) → (P → Q)  :=
 begin
-  sorry,
+  intros hnq_np p,
+  by_cases hq : Q,
+  exact hq,
+  exfalso,
+  have hnp := hnq_np hq,
+  have hboom := hnp p,
+  contradiction,
 end
 
 theorem contrapositive_law :
   (P → Q) ↔ (¬Q → ¬P)  :=
 begin
-  sorry,
+  split,
+  apply impl_as_contrapositive,
+  apply impl_as_contrapositive_converse,
 end
 
 
@@ -107,6 +127,10 @@ end
 theorem lem_irrefutable :
   ¬¬(P∨¬P)  :=
 begin
+  intro hnp,
+  apply hnp,
+  right,
+  --WORK IN PROGRESS,=
   sorry,
 end
 
