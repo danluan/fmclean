@@ -127,11 +127,14 @@ end
 theorem lem_irrefutable :
   ¬¬(P∨¬P)  :=
 begin
-  intro hnp,
-  apply hnp,
+  intro n_p_np,
+  apply n_p_np,
   right,
-  --WORK IN PROGRESS,=
-  sorry,
+  intro p,
+  have p_or_q : P ∨ ¬P,
+  left,
+  exact p,
+  contradiction,
 end
 
 
@@ -142,7 +145,13 @@ end
 theorem peirce_law_weak :
   ((P → Q) → P) → ¬¬P  :=
 begin
-  sorry,
+  intros pq_p np,
+  have p : P,
+  apply pq_p,
+  intro p,
+  exfalso,
+  contradiction,
+  contradiction,
 end
 
 
@@ -153,13 +162,23 @@ end
 theorem disj_as_negconj :
   P∨Q → ¬(¬P∧¬Q)  :=
 begin
-  sorry,
+  intro poq,
+  intro np_nq,
+  cases np_nq with np nq,
+  cases poq,
+  contradiction,
+  contradiction,
 end
 
 theorem conj_as_negdisj :
   P∧Q → ¬(¬P∨¬Q)  :=
 begin
-  sorry,
+  intro p_and_q,
+  intro np_or_nq,
+  cases p_and_q with p q,
+  cases np_or_nq,
+  contradiction,
+  contradiction,
 end
 
 
