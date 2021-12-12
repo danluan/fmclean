@@ -1,1 +1,0 @@
-cc, --cheirinho de roubo

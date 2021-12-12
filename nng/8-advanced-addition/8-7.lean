@@ -1,5 +1,0 @@
-split,
-exact add_right_cancel _ _ _,
-intro ab,
-rw ab,
-refl,

@@ -1,8 +1,0 @@
-intro h,
-induction a with v hv,
-rw zero_add at h,
-exact h,
-rw succ_add at h,
-rw succ_eq_succ_iff at h,
-have hb := hv h,
-exact hb,

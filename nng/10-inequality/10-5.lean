@@ -1,7 +1,0 @@
-cases hab with n hbac,
-cases hbc with m hcac,
-rw hcac, rw hbac,
-rw le_iff_exists_add,
-use (n + m),
-rw add_assoc,
-refl,

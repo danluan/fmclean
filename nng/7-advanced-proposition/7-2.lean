@@ -1,5 +1,0 @@
-intro peq,
-cases peq with p q,
-split,
-exact q,
-exact p,

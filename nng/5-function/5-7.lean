@@ -1,6 +1,0 @@
-intro hpq,
-intro hqf,
-intro hp,
-have hq : Q := hpq hp,
-have hf : F := hqf hq,
-exact hf,

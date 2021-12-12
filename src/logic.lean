@@ -442,9 +442,10 @@ begin
   intro n_all_p,
   exfalso,
   apply n_all_p,
-  --work in progress
-  sorry,
-  
+  intro u,
+  by_cases npu : P u,
+  exact npu,
+
 end
 
 theorem demorgan_exists_law :
@@ -495,7 +496,7 @@ begin
   apply n_ex_np,
   existsi u,
   intro pu,
-  apply n_ex_np,
+
   sorry,
   --work in progress
 end
@@ -503,19 +504,24 @@ end
 theorem exists_as_neg_forall_converse :
   ¬(∀x, ¬P x) → (∃x, P x)  :=
 begin
-  sorry,
+  intro n_all_np,
+  
 end
 
 theorem forall_as_neg_exists_law :
   (∀x, P x) ↔ ¬(∃x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  apply forall_as_neg_exists,
+  apply forall_as_neg_exists_converse,
 end
 
 theorem exists_as_neg_forall_law :
   (∃x, P x) ↔ ¬(∀x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  apply exists_as_neg_forall,
+  apply exists_as_neg_forall_converse,
 end
 
 
@@ -526,38 +532,86 @@ end
 theorem exists_conj_as_conj_exists :
   (∃x, P x ∧ Q x) → (∃x, P x) ∧ (∃x, Q x)  :=
 begin
-  sorry,
+  intro ex_p_and_q,
+  cases ex_p_and_q with u pu_and_qu,
+  cases pu_and_qu with pu qu,
+  split,
+  existsi u,
+  assumption,
+  existsi u,
+  assumption,
 end
 
 theorem exists_disj_as_disj_exists :
   (∃x, P x ∨ Q x) → (∃x, P x) ∨ (∃x, Q x)  :=
 begin
-  sorry,
+  intro ex_p_or_q,
+  cases ex_p_or_q with u pu_or_qu,
+  cases pu_or_qu with pu pq,
+  left,
+  existsi u,
+  assumption,
+  right,
+  existsi u,
+  assumption,
 end
 
 theorem exists_disj_as_disj_exists_converse :
   (∃x, P x) ∨ (∃x, Q x) → (∃x, P x ∨ Q x)  :=
 begin
-  sorry,
+  intro exp_or_exq,
+  cases exp_or_exq with exp exq,
+  cases exp with u pu,
+  existsi u,
+  left,
+  assumption,
+  cases exq with u qu,
+  existsi u,
+  right,
+  assumption,
 end
 
 theorem forall_conj_as_conj_forall :
   (∀x, P x ∧ Q x) → (∀x, P x) ∧ (∀x, Q x)  :=
 begin
-  sorry,
+  intro all_p_and_q,
+  split,
+  intro u,
+  have pu_and_qu := all_p_and_q u,
+  cases pu_and_qu with pu qu,
+  assumption,
+  intro x,
+  have px_and_qx := all_p_and_q x,
+  cases px_and_qx with px qx,
+  assumption,
 end
 
 theorem forall_conj_as_conj_forall_converse :
   (∀x, P x) ∧ (∀x, Q x) → (∀x, P x ∧ Q x)  :=
 begin
-  sorry,
+  intro allp_and_allq,
+  intro a,
+  cases allp_and_allq with all_p all_q,
+  split,
+  have pa := all_p a,
+  assumption,
+  have qa := all_q a,
+  assumption,
 end
 
 
 theorem forall_disj_as_disj_forall_converse :
   (∀x, P x) ∨ (∀x, Q x) → (∀x, P x ∨ Q x)  :=
 begin
-  sorry,
+  intro allp_or_allq,
+  intro u,
+  cases allp_or_allq with allp allq,
+  have pu := allp u,
+  left,
+  assumption,
+  have qu := allq u,
+  right,
+  assumption,
 end
 
 

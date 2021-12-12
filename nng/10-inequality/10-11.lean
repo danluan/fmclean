@@ -1,6 +1,0 @@
-intro h,
-intro t,
-cases h with c h,
-rw h,
-use c,
-simp,

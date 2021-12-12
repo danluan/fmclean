@@ -1,5 +1,0 @@
-intro pnp,
-cases pnp with p np,
-exfalso,
-have f : false := np p,
-exact f,

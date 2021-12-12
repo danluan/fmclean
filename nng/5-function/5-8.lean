@@ -1,6 +1,0 @@
-intro hpq,
-intro hqe,
-intro hp,
-have hq : Q := hpq hp,
-have he : empty := hqe hq,
-exact he,

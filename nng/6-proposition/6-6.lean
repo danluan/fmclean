@@ -1,6 +1,0 @@
-intro pqr,
-intro pq,
-intro p,
-have q : Q := pq p,
-have r : R := pqr p q,
-exact r,

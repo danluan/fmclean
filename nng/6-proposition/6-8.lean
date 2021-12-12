@@ -1,8 +1,0 @@
-intro pq,
-rw not_iff_imp_false,
-rw not_iff_imp_false,
-intro qf,
-intro p,
-have q : Q := pq p,
-have f : false := qf q,
-exact f,

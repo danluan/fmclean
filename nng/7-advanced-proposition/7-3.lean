@@ -1,7 +1,0 @@
-intro peq,
-intro per,
-cases per with q r,
-split,
-cases peq with p q,
-exact p,
-exact r,

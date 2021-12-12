@@ -1,7 +1,0 @@
-intro h,
-cases h with c hSb,
-rw succ_add at hSb,
-have hb : b = a + c := succ_inj hSb,
-use c,
-rw hb,
-refl,

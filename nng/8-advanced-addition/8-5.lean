@@ -1,8 +1,0 @@
-intro h,
-induction t with k hk,
-repeat {rw add_zero at h},
-exact h,
-repeat {rw add_succ at h},
-have hs := succ_inj h,
-apply hk,
-exact hs,

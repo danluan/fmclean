@@ -1,7 +1,0 @@
-induction m with n hn,
-rw mul_zero,
-refl,
-rw mul_succ,
-rw add_zero,
-rw hn,
-refl,

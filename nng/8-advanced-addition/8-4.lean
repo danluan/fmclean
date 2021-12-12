@@ -1,7 +1,0 @@
-split,
-intro hs,
-apply succ_inj,
-exact hs,
-intro hab,
-rw hab,
-refl,

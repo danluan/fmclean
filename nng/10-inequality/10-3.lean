@@ -1,8 +1,0 @@
-intro h,
-rw le_iff_exists_add at h ⊢,
-cases h with c hc,
-rw succ_eq_add_one,
-rw hc,
-use (c + 1),
-rw add_assoc,
-refl,
