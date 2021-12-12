@@ -440,12 +440,14 @@ theorem demorgan_neg_forall :
   ¬(∀x, P x) → (∃x, ¬P x)  :=
 begin
   intro n_all_p,
-  exfalso,
+  by_contra nex_np,
   apply n_all_p,
   intro u,
-  by_cases npu : P u,
-  exact npu,
-
+  by_contra npu,
+  apply nex_np,
+  existsi u,
+  intro pu,
+  contradiction,
 end
 
 theorem demorgan_exists_law :
@@ -490,22 +492,30 @@ end
 theorem forall_as_neg_exists_converse :
   ¬(∃x, ¬P x) → (∀x, P x)  :=
 begin
-  intro n_ex_np,
+  intro nex_np,
+  by_contra nall_px,
+  apply nall_px,
   intro u,
-  exfalso,
-  apply n_ex_np,
+  by_contra npu,
+  apply nex_np,
   existsi u,
   intro pu,
+  contradiction,
 
-  sorry,
-  --work in progress
+  
 end
 
 theorem exists_as_neg_forall_converse :
   ¬(∀x, ¬P x) → (∃x, P x)  :=
 begin
   intro n_all_np,
-  
+  by_contra nex_p,
+  apply n_all_np,
+  intro u,
+  by_contra pu,
+  apply nex_p,
+  existsi u,
+  exact pu,
 end
 
 theorem forall_as_neg_exists_law :
