@@ -624,21 +624,34 @@ begin
   assumption,
 end
 
+/-SECTION "NOT THEOREMS" : em espera.
 
-/- NOT THEOREMS --------------------------------
 
 theorem forall_disj_as_disj_forall :
   (∀x, P x ∨ Q x) → (∀x, P x) ∨ (∀x, Q x)  :=
 begin
-  sorry,
+  intro all_p_or_q,
+  left,
+  intro u,
+  have pu_or_qu := all_p_or_q u,
+  cases pu_or_qu with pu qu,
+  exact pu,
+  --NÃO VALIDO
 end
 
 theorem exists_conj_as_conj_exists_converse :
   (∃x, P x) ∧ (∃x, Q x) → (∃x, P x ∧ Q x)  :=
 begin
-  sorry,
+  intro exp_or_exq,
+  cases exp_or_exq with exp exq,
+  cases exp with u pu,
+  existsi u,
+  split,
+  assumption,
+  cases exq with u' qu,
+  --NÃO VALIDO
 end
 
----------------------------------------------- -/
+-----------------------------------------/
 
 end predicate
