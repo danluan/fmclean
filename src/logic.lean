@@ -413,38 +413,54 @@ theorem demorgan_exists_neg :
 begin
   intro h,
   cases h with x npx,
-  intro px,
-  cases px with npx x,
+  intro all_p,
+  have px := all_p x,
+  contradiction,
 end
 
 theorem demorgan_neg_exists :
   ¬(∃x, P x) → (∀x, ¬P x)  :=
 begin
-  sorry,
+  intros ex_px u pu,
+  apply ex_px,
+  existsi u,
+  exact pu,
 end
 
 theorem demorgan_forall_neg :
   (∀x, ¬P x) → ¬(∃x, P x)  :=
 begin
-  sorry,
+  intros all_npx ex_px,
+  cases ex_px with u p_u,
+  have np_u := all_npx u,
+  contradiction,
 end
 
 theorem demorgan_neg_forall :
   ¬(∀x, P x) → (∃x, ¬P x)  :=
 begin
+  intro n_all_p,
+  exfalso,
+  apply n_all_p,
+  --work in progress
   sorry,
+  
 end
 
 theorem demorgan_exists_law :
   (∃x, ¬P x) ↔ ¬(∀x, P x)  :=
 begin
-  sorry,
+  split,
+  apply demorgan_exists_neg,
+  apply demorgan_neg_forall,
 end
 
 theorem demorgan_forall_law :
   (∀x, ¬P x) ↔ ¬(∃x, P x)  :=
 begin
-  sorry,
+  split,
+  apply demorgan_forall_neg,
+  apply demorgan_neg_exists,
 end
 
 
@@ -455,19 +471,33 @@ end
 theorem exists_as_neg_forall :
   (∃x, P x) → ¬(∀x, ¬P x)  :=
 begin
-  sorry,
+  intros ex_p all_np,
+  cases ex_p with u pu,
+  have npu := all_np u,
+  contradiction,
 end
 
 theorem forall_as_neg_exists :
   (∀x, P x) → ¬(∃x, ¬P x)  :=
 begin
-  sorry,
+  intros all_p ex_np,
+  cases ex_np with u npu,
+  have pu := all_p u,
+  contradiction,
 end
 
 theorem forall_as_neg_exists_converse :
   ¬(∃x, ¬P x) → (∀x, P x)  :=
 begin
+  intro n_ex_np,
+  intro u,
+  exfalso,
+  apply n_ex_np,
+  existsi u,
+  intro pu,
+  apply n_ex_np,
   sorry,
+  --work in progress
 end
 
 theorem exists_as_neg_forall_converse :
